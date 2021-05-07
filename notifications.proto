@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "/internal/domain/proto";
+import "google/protobuf/timestamp.proto";
+
+message Notification {
+  string to = 1; //owner of notification
+  string from = 2; //user or event sent
+  google.protobuf.Timestamp time = 3;
+  string where = 4;   // which topic. ID
+  string content = 5; // what sent. ID
+  string type = 6;    // forum notification, friend request, forum ban etc
+}
+
+message ReqNotifications {
+  string user =1; //ID
+}
+
+message RespNotifications{
+    repeated Notification notifications =1;
+}
+
+message EmptyResponse {
+}
+
+service NotificationsService { 
+  rpc NotificationCreate(Notification) returns (EmptyResponse); 
+  rpc NotificationGet(ReqNotifications) returns (EmptyResponse); 
+}
