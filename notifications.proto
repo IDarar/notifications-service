@@ -1,11 +1,12 @@
 syntax = "proto3";
 
-option go_package = "/internal/domain/proto";
+option go_package = "/internal/domain/pb";
 import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
 
 message Notification {
-  string to = 1; //owner of notification
-  string from = 2; //user or event sent
+  string to = 1;   // owner of notification
+  string from = 2; // user or event sent
   google.protobuf.Timestamp time = 3;
   string where = 4;   // which topic. ID
   string content = 5; // what sent. ID
@@ -13,21 +14,16 @@ message Notification {
 }
 
 message ReqNotifications {
-  string user =1; //ID
+  string user = 1; // ID
 }
 
-message RespNotifications{
-    repeated Notification notifications =1;
-}
+message RespNotifications { repeated Notification notifications = 1; }
 
-message EmptyResponse {
-}
-message UnreadNumResponse{
-  int32 num =1;
-}
-service NotificationsService { 
-  rpc NotificationCreate(Notification) returns (EmptyResponse); 
-  rpc NotificationsGet(ReqNotifications) returns (RespNotifications); 
-  rpc NotificationsGetUnread(ReqNotifications) returns (UnreadNumResponse); 
-  rpc NotificationMark (Notification) returns(EmptyResponse); //change status of motification: seen or unseen
+message EmptyResponse {}
+message UnreadNumResponse { int32 num = 1; }
+service NotificationsService {
+  rpc NotificationCreate(Notification) returns (google.protobuf.Empty);
+  rpc NotificationsGet(ReqNotifications) returns (RespNotifications);
+  rpc NotificationsGetUnread(ReqNotifications) returns (UnreadNumResponse);
+  rpc NotificationMark(Notification) returns (google.protobuf.Empty); // change status of motification: seen or unseen
 }

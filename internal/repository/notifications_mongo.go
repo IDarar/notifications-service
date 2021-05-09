@@ -18,5 +18,7 @@ func NewNotificationsRepo(db *mongo.Database) *NotificationsRepo {
 func (r *NotificationsRepo) Create(ctx context.Context, not domain.Notification) error {
 	return nil
 }
-func (r *NotificationsRepo) Delete()
-func (r *NotificationsRepo) GetByUserID(uID int) ([]domain.Notification, error)
+func (r *NotificationsRepo) Delete() {}
+func (r *NotificationsRepo) GetByUserID(uID int) ([]domain.Notification, error) {
+	return nil, nil
+}

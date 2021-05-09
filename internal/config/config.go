@@ -20,7 +20,10 @@ type (
 		Name     string `mapstructure:"databaseName"`
 	}
 	GRPCConfig struct {
-		Port string `mapstructure:"port"`
+		Port             string `mapstructure:"port"`
+		ServerCertFile   string `mapstructure:"servercertfile"`
+		ServerKeyFile    string `mapstructure:"serverkeyfile"`
+		ClientCACertFile string `mapstructure:"clientcacertfile"`
 	}
 )
 

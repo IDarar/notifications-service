@@ -2,10 +2,14 @@ package app
 
 import (
 	"context"
-	"time"
+	"log"
 
 	"github.com/IDarar/hub/pkg/logger"
 	"github.com/IDarar/notifications-service/internal/config"
+	"github.com/IDarar/notifications-service/internal/repository"
+	"github.com/IDarar/notifications-service/internal/server"
+	"github.com/IDarar/notifications-service/internal/service"
+	v1 "github.com/IDarar/notifications-service/internal/transport/grpc/v1"
 	"github.com/IDarar/notifications-service/pkg/database/mongodb"
 )
 
@@ -15,6 +19,7 @@ func Run(configPath string) {
 		logger.Error(err)
 		return
 	}
+
 	logger.Info(cfg)
 
 	mongoClient, err := mongodb.NewClient(cfg.Mongo.URI, cfg.Mongo.User, cfg.Mongo.Password)
@@ -27,5 +32,13 @@ func Run(configPath string) {
 	db := mongoClient.Database(cfg.Mongo.Name)
 
 	defer db.Client().Disconnect(ctx)
-	time.Sleep(15 * time.Second)
+	repos := repository.NewRepositories(db)
+
+	srvcs := service.NewServices(service.Deps{
+		Repos: repos,
+	})
+	notsServer := v1.NewNotificationsServer(srvcs)
+
+	log.Fatal(server.RunServer(cfg, notsServer))
+
 }

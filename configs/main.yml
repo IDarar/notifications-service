@@ -2,4 +2,8 @@ mongo:
   databaseName: hubNotifications
 
 grpc:
-  port: 7777
+ port: 7777
+ servercertfile: cert/server-cert.pem
+ serverkeyfile: cert/server-key.pem
+ clientcacertfile: cert/ca-cert.pem
+
