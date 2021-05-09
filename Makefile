@@ -1,7 +1,10 @@
 run:
 	go run ./cmd/hub-notifications/main.go
-genproto:
+mongo:
 	sudo docker-compose up -d
+genproto:
+	protoc -I . notifications.proto --go_out=plugins=grpc:. 
+ 
 cert:
 	cd cert; bash gen.sh; cd ..
 

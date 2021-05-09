@@ -244,6 +244,53 @@ func (*EmptyResponse) Descriptor() ([]byte, []int) {
 	return file_notifications_proto_rawDescGZIP(), []int{3}
 }
 
+type UnreadNumResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Num int32 `protobuf:"varint,1,opt,name=num,proto3" json:"num,omitempty"`
+}
+
+func (x *UnreadNumResponse) Reset() {
+	*x = UnreadNumResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_notifications_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UnreadNumResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UnreadNumResponse) ProtoMessage() {}
+
+func (x *UnreadNumResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_notifications_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UnreadNumResponse.ProtoReflect.Descriptor instead.
+func (*UnreadNumResponse) Descriptor() ([]byte, []int) {
+	return file_notifications_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *UnreadNumResponse) GetNum() int32 {
+	if x != nil {
+		return x.Num
+	}
+	return 0
+}
+
 var File_notifications_proto protoreflect.FileDescriptor
 
 var file_notifications_proto_rawDesc = []byte{
@@ -269,14 +316,24 @@ var file_notifications_proto_rawDesc = []byte{
 	0x03, 0x28, 0x0b, 0x32, 0x0d, 0x2e, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69,
 	0x6f, 0x6e, 0x52, 0x0d, 0x6e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
 	0x73, 0x22, 0x0f, 0x0a, 0x0d, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x32, 0x81, 0x01, 0x0a, 0x14, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x73, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x33, 0x0a, 0x12, 0x4e,
-	0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x43, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x12, 0x0d, 0x2e, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x1a, 0x0e, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x12, 0x34, 0x0a, 0x0f, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e,
-	0x47, 0x65, 0x74, 0x12, 0x11, 0x2e, 0x52, 0x65, 0x71, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63,
-	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x1a, 0x0e, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x52, 0x65,
+	0x73, 0x65, 0x22, 0x25, 0x0a, 0x11, 0x55, 0x6e, 0x72, 0x65, 0x61, 0x64, 0x4e, 0x75, 0x6d, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x32, 0xfa, 0x01, 0x0a, 0x14, 0x4e, 0x6f,
+	0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x53, 0x65, 0x72, 0x76, 0x69,
+	0x63, 0x65, 0x12, 0x33, 0x0a, 0x12, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x43, 0x72, 0x65, 0x61, 0x74, 0x65, 0x12, 0x0d, 0x2e, 0x4e, 0x6f, 0x74, 0x69, 0x66,
+	0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x0e, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x52,
+	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x39, 0x0a, 0x10, 0x4e, 0x6f, 0x74, 0x69, 0x66,
+	0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x47, 0x65, 0x74, 0x12, 0x11, 0x2e, 0x52, 0x65,
+	0x71, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x1a, 0x12,
+	0x2e, 0x52, 0x65, 0x73, 0x70, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f,
+	0x6e, 0x73, 0x12, 0x3f, 0x0a, 0x16, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x73, 0x47, 0x65, 0x74, 0x55, 0x6e, 0x72, 0x65, 0x61, 0x64, 0x12, 0x11, 0x2e, 0x52,
+	0x65, 0x71, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73, 0x1a,
+	0x12, 0x2e, 0x55, 0x6e, 0x72, 0x65, 0x61, 0x64, 0x4e, 0x75, 0x6d, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x12, 0x31, 0x0a, 0x10, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69, 0x63, 0x61, 0x74,
+	0x69, 0x6f, 0x6e, 0x4d, 0x61, 0x72, 0x6b, 0x12, 0x0d, 0x2e, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x69,
+	0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x0e, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x52, 0x65,
 	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x18, 0x5a, 0x16, 0x2f, 0x69, 0x6e, 0x74, 0x65, 0x72,
 	0x6e, 0x61, 0x6c, 0x2f, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f,
 	0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
@@ -294,23 +351,28 @@ func file_notifications_proto_rawDescGZIP() []byte {
 	return file_notifications_proto_rawDescData
 }
 
-var file_notifications_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_notifications_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_notifications_proto_goTypes = []interface{}{
 	(*Notification)(nil),          // 0: Notification
 	(*ReqNotifications)(nil),      // 1: ReqNotifications
 	(*RespNotifications)(nil),     // 2: RespNotifications
 	(*EmptyResponse)(nil),         // 3: EmptyResponse
-	(*timestamppb.Timestamp)(nil), // 4: google.protobuf.Timestamp
+	(*UnreadNumResponse)(nil),     // 4: UnreadNumResponse
+	(*timestamppb.Timestamp)(nil), // 5: google.protobuf.Timestamp
 }
 var file_notifications_proto_depIdxs = []int32{
-	4, // 0: Notification.time:type_name -> google.protobuf.Timestamp
+	5, // 0: Notification.time:type_name -> google.protobuf.Timestamp
 	0, // 1: RespNotifications.notifications:type_name -> Notification
 	0, // 2: NotificationsService.NotificationCreate:input_type -> Notification
-	1, // 3: NotificationsService.NotificationGet:input_type -> ReqNotifications
-	3, // 4: NotificationsService.NotificationCreate:output_type -> EmptyResponse
-	3, // 5: NotificationsService.NotificationGet:output_type -> EmptyResponse
-	4, // [4:6] is the sub-list for method output_type
-	2, // [2:4] is the sub-list for method input_type
+	1, // 3: NotificationsService.NotificationsGet:input_type -> ReqNotifications
+	1, // 4: NotificationsService.NotificationsGetUnread:input_type -> ReqNotifications
+	0, // 5: NotificationsService.NotificationMark:input_type -> Notification
+	3, // 6: NotificationsService.NotificationCreate:output_type -> EmptyResponse
+	2, // 7: NotificationsService.NotificationsGet:output_type -> RespNotifications
+	4, // 8: NotificationsService.NotificationsGetUnread:output_type -> UnreadNumResponse
+	3, // 9: NotificationsService.NotificationMark:output_type -> EmptyResponse
+	6, // [6:10] is the sub-list for method output_type
+	2, // [2:6] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
 	2, // [2:2] is the sub-list for extension extendee
 	0, // [0:2] is the sub-list for field type_name
@@ -370,6 +432,18 @@ func file_notifications_proto_init() {
 				return nil
 			}
 		}
+		file_notifications_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UnreadNumResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -377,7 +451,7 @@ func file_notifications_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_notifications_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   4,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -404,7 +478,9 @@ const _ = grpc.SupportPackageIsVersion6
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type NotificationsServiceClient interface {
 	NotificationCreate(ctx context.Context, in *Notification, opts ...grpc.CallOption) (*EmptyResponse, error)
-	NotificationGet(ctx context.Context, in *ReqNotifications, opts ...grpc.CallOption) (*EmptyResponse, error)
+	NotificationsGet(ctx context.Context, in *ReqNotifications, opts ...grpc.CallOption) (*RespNotifications, error)
+	NotificationsGetUnread(ctx context.Context, in *ReqNotifications, opts ...grpc.CallOption) (*UnreadNumResponse, error)
+	NotificationMark(ctx context.Context, in *Notification, opts ...grpc.CallOption) (*EmptyResponse, error)
 }
 
 type notificationsServiceClient struct {
@@ -424,9 +500,27 @@ func (c *notificationsServiceClient) NotificationCreate(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *notificationsServiceClient) NotificationGet(ctx context.Context, in *ReqNotifications, opts ...grpc.CallOption) (*EmptyResponse, error) {
+func (c *notificationsServiceClient) NotificationsGet(ctx context.Context, in *ReqNotifications, opts ...grpc.CallOption) (*RespNotifications, error) {
+	out := new(RespNotifications)
+	err := c.cc.Invoke(ctx, "/NotificationsService/NotificationsGet", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *notificationsServiceClient) NotificationsGetUnread(ctx context.Context, in *ReqNotifications, opts ...grpc.CallOption) (*UnreadNumResponse, error) {
+	out := new(UnreadNumResponse)
+	err := c.cc.Invoke(ctx, "/NotificationsService/NotificationsGetUnread", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *notificationsServiceClient) NotificationMark(ctx context.Context, in *Notification, opts ...grpc.CallOption) (*EmptyResponse, error) {
 	out := new(EmptyResponse)
-	err := c.cc.Invoke(ctx, "/NotificationsService/NotificationGet", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/NotificationsService/NotificationMark", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -436,7 +530,9 @@ func (c *notificationsServiceClient) NotificationGet(ctx context.Context, in *Re
 // NotificationsServiceServer is the server API for NotificationsService service.
 type NotificationsServiceServer interface {
 	NotificationCreate(context.Context, *Notification) (*EmptyResponse, error)
-	NotificationGet(context.Context, *ReqNotifications) (*EmptyResponse, error)
+	NotificationsGet(context.Context, *ReqNotifications) (*RespNotifications, error)
+	NotificationsGetUnread(context.Context, *ReqNotifications) (*UnreadNumResponse, error)
+	NotificationMark(context.Context, *Notification) (*EmptyResponse, error)
 }
 
 // UnimplementedNotificationsServiceServer can be embedded to have forward compatible implementations.
@@ -446,8 +542,14 @@ type UnimplementedNotificationsServiceServer struct {
 func (*UnimplementedNotificationsServiceServer) NotificationCreate(context.Context, *Notification) (*EmptyResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NotificationCreate not implemented")
 }
-func (*UnimplementedNotificationsServiceServer) NotificationGet(context.Context, *ReqNotifications) (*EmptyResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method NotificationGet not implemented")
+func (*UnimplementedNotificationsServiceServer) NotificationsGet(context.Context, *ReqNotifications) (*RespNotifications, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NotificationsGet not implemented")
+}
+func (*UnimplementedNotificationsServiceServer) NotificationsGetUnread(context.Context, *ReqNotifications) (*UnreadNumResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NotificationsGetUnread not implemented")
+}
+func (*UnimplementedNotificationsServiceServer) NotificationMark(context.Context, *Notification) (*EmptyResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method NotificationMark not implemented")
 }
 
 func RegisterNotificationsServiceServer(s *grpc.Server, srv NotificationsServiceServer) {
@@ -472,20 +574,56 @@ func _NotificationsService_NotificationCreate_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _NotificationsService_NotificationGet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _NotificationsService_NotificationsGet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReqNotifications)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(NotificationsServiceServer).NotificationGet(ctx, in)
+		return srv.(NotificationsServiceServer).NotificationsGet(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/NotificationsService/NotificationGet",
+		FullMethod: "/NotificationsService/NotificationsGet",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NotificationsServiceServer).NotificationGet(ctx, req.(*ReqNotifications))
+		return srv.(NotificationsServiceServer).NotificationsGet(ctx, req.(*ReqNotifications))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NotificationsService_NotificationsGetUnread_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ReqNotifications)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotificationsServiceServer).NotificationsGetUnread(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/NotificationsService/NotificationsGetUnread",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotificationsServiceServer).NotificationsGetUnread(ctx, req.(*ReqNotifications))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _NotificationsService_NotificationMark_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Notification)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(NotificationsServiceServer).NotificationMark(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/NotificationsService/NotificationMark",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(NotificationsServiceServer).NotificationMark(ctx, req.(*Notification))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -499,8 +637,16 @@ var _NotificationsService_serviceDesc = grpc.ServiceDesc{
 			Handler:    _NotificationsService_NotificationCreate_Handler,
 		},
 		{
-			MethodName: "NotificationGet",
-			Handler:    _NotificationsService_NotificationGet_Handler,
+			MethodName: "NotificationsGet",
+			Handler:    _NotificationsService_NotificationsGet_Handler,
+		},
+		{
+			MethodName: "NotificationsGetUnread",
+			Handler:    _NotificationsService_NotificationsGetUnread_Handler,
+		},
+		{
+			MethodName: "NotificationMark",
+			Handler:    _NotificationsService_NotificationMark_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

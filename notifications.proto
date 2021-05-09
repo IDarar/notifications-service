@@ -22,8 +22,12 @@ message RespNotifications{
 
 message EmptyResponse {
 }
-
+message UnreadNumResponse{
+  int32 num =1;
+}
 service NotificationsService { 
   rpc NotificationCreate(Notification) returns (EmptyResponse); 
-  rpc NotificationGet(ReqNotifications) returns (EmptyResponse); 
+  rpc NotificationsGet(ReqNotifications) returns (RespNotifications); 
+  rpc NotificationsGetUnread(ReqNotifications) returns (UnreadNumResponse); 
+  rpc NotificationMark (Notification) returns(EmptyResponse); //change status of motification: seen or unseen
 }

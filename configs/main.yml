@@ -1,2 +1,5 @@
 mongo:
   databaseName: hubNotifications
+
+grpc:
+  port: 7777

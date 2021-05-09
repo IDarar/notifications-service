@@ -11,12 +11,16 @@ type (
 	Config struct {
 		Environment string
 		Mongo       MongoConfig
+		GRPC        GRPCConfig
 	}
 	MongoConfig struct {
 		URI      string
 		User     string
 		Password string
 		Name     string `mapstructure:"databaseName"`
+	}
+	GRPCConfig struct {
+		Port string `mapstructure:"port"`
 	}
 )
 
@@ -36,7 +40,6 @@ func Init(path string) (*Config, error) {
 	}
 
 	setFromEnv(&cfg)
-
 	return &cfg, nil
 }
 
@@ -44,6 +47,10 @@ func unmarshal(cfg *Config) error {
 	if err := viper.UnmarshalKey("mongo", &cfg.Mongo); err != nil {
 		return err
 	}
+	if err := viper.UnmarshalKey("grpc", &cfg.GRPC); err != nil {
+		return err
+	}
+
 	return nil
 }
 func setFromEnv(cfg *Config) {
