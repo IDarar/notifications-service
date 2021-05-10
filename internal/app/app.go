@@ -20,7 +20,7 @@ func Run(configPath string) {
 		return
 	}
 
-	logger.Info(cfg)
+	logger.Info(cfg.GRPC.ClientCACertFile)
 
 	mongoClient, err := mongodb.NewClient(cfg.Mongo.URI, cfg.Mongo.User, cfg.Mongo.Password)
 	if err != nil {

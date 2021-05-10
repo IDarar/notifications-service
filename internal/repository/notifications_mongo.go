@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 
+	"github.com/IDarar/hub/pkg/logger"
 	"github.com/IDarar/notifications-service/internal/domain"
 	"go.mongodb.org/mongo-driver/mongo"
 )
@@ -16,7 +17,9 @@ func NewNotificationsRepo(db *mongo.Database) *NotificationsRepo {
 }
 
 func (r *NotificationsRepo) Create(ctx context.Context, not domain.Notification) error {
-	return nil
+	res, err := r.db.InsertOne(ctx, not)
+	logger.Info(res.InsertedID)
+	return err
 }
 func (r *NotificationsRepo) Delete() {}
 func (r *NotificationsRepo) GetByUserID(uID int) ([]domain.Notification, error) {

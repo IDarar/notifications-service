@@ -13,7 +13,7 @@ import (
 
 func RunServer(cfg *config.Config, notServer pb.NotificationsServiceServer) error {
 
-	tlsCredentials, err := tlscredentials.LoadTLSCredentials(cfg)
+	tlsCredentials, err := tlscredentials.LoadTLSCredentialsServer(cfg)
 	if err != nil {
 		return fmt.Errorf("cannot load TLS credentials: %w", err)
 	}

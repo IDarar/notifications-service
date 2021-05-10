@@ -18,7 +18,8 @@ func NewNotificationsService(repo repository.Notifications) *NotificationsServic
 
 }
 func (s *NotificationsService) Create(ctx context.Context, not domain.Notification) error {
-	return nil
+	return s.repo.Create(ctx, not)
+
 }
 func (s *NotificationsService) Delete() {}
 func (s *NotificationsService) GetByUserID(uID int) ([]domain.Notification, error) {

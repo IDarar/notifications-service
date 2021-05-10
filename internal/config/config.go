@@ -24,6 +24,8 @@ type (
 		ServerCertFile   string `mapstructure:"servercertfile"`
 		ServerKeyFile    string `mapstructure:"serverkeyfile"`
 		ClientCACertFile string `mapstructure:"clientcacertfile"`
+		ClientKeyFile    string `mapstructure:"clinetkeyfile"`
+		ClientCertFile   string `mapstructure:"clinetcertfile"`
 	}
 )
 

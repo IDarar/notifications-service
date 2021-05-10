@@ -23,6 +23,8 @@ func NewNotificationsServer(srvs *service.Services) *NotificationServer {
 }
 
 func (s *NotificationServer) NotificationCreate(ctx context.Context, not *pb.Notification) (*emptypb.Empty, error) {
+	logger.Info("successed ")
+
 	uId, err := idConv(not.To)
 	if err != nil {
 		return nil, err
@@ -31,13 +33,15 @@ func (s *NotificationServer) NotificationCreate(ctx context.Context, not *pb.Not
 	if err != nil {
 		return nil, err
 	}
+	logger.Info(from)
 	notification := &domain.Notification{UserID: uId, From: from}
-
+	logger.Info(notification)
 	if err = s.services.Notifications.Create(ctx, *notification); err != nil {
 		return nil, err
 	}
+	var empty emptypb.Empty
 
-	return nil, nil
+	return &empty, nil
 }
 func (s *NotificationServer) NotificationsGet(ctx context.Context, not *pb.ReqNotifications) (*pb.RespNotifications, error) {
 	return nil, nil
