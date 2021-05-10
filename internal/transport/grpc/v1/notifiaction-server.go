@@ -6,8 +6,8 @@ import (
 
 	"github.com/IDarar/hub/pkg/logger"
 	"github.com/IDarar/notifications-service/internal/domain"
-	"github.com/IDarar/notifications-service/internal/domain/pb"
 	"github.com/IDarar/notifications-service/internal/service"
+	"github.com/IDarar/notifications-service/pb"
 	"google.golang.org/protobuf/types/known/emptypb"
 )
 

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "/internal/domain/pb";
+option go_package = "/pb";
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 

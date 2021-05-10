@@ -6,7 +6,7 @@ import (
 
 	"github.com/IDarar/hub/pkg/logger"
 	"github.com/IDarar/notifications-service/internal/config"
-	"github.com/IDarar/notifications-service/internal/domain/pb"
+	"github.com/IDarar/notifications-service/pb"
 	"github.com/IDarar/notifications-service/pkg/tlscredentials"
 	"google.golang.org/grpc"
 )

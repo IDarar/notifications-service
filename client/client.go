@@ -6,7 +6,7 @@ import (
 
 	"github.com/IDarar/hub/pkg/logger"
 	"github.com/IDarar/notifications-service/internal/config"
-	"github.com/IDarar/notifications-service/internal/domain/pb"
+	"github.com/IDarar/notifications-service/pb"
 	"github.com/IDarar/notifications-service/pkg/tlscredentials"
 	"github.com/golang/protobuf/ptypes/timestamp"
 	"google.golang.org/grpc"
@@ -45,15 +45,4 @@ func main() {
 		return
 	}
 	logger.Info(r)
-} /*
-{
-	"to": "Hello",
-	"from": "Hello",
-	"time": {
-	  "seconds": 20,
-	  "nanos": 10
-	},
-	"where": "Hello",
-	"content": "Hello",
-	"type": "Hello"
-  }*/
+}
