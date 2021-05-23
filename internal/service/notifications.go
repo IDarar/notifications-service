@@ -5,9 +5,11 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/IDarar/hub/pkg/logger"
 	"github.com/IDarar/notifications-service/internal/domain"
 	"github.com/IDarar/notifications-service/internal/repository"
 	"github.com/IDarar/notifications-service/pb"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 //Notification types
@@ -16,8 +18,6 @@ const (
 	friend      = "friend"
 	firstFriend = "firstFriend"
 	ban         = "ban"
-
-	amount = 20 //get nots by one request
 )
 
 type NotificationsService struct {
@@ -55,6 +55,28 @@ func (s *NotificationsService) Delete() {}
 func (s *NotificationsService) MarkAs() {}
 
 func (s *NotificationsService) GetForUser(uID int, offset int, notType string) ([]*pb.Notification, error) {
+	notifications, err := s.repo.GetForUser(uID, offset, notType)
+	if err != nil {
+		logger.Error(err)
+		return nil, err
+	}
+	protoNots := []*pb.Notification{}
 
-	return nil, nil
+	if len(notifications) == 0 {
+		return protoNots, nil
+	}
+	for i := range notifications {
+		protoNots = append(protoNots, &pb.Notification{
+			UserId:  int32(notifications[i].UserID),
+			From:    int32(notifications[i].From),
+			Topic:   notifications[i].Topic,
+			Text:    notifications[i].Text,
+			Time:    timestamppb.New(notifications[i].CreatedAt),
+			Type:    notifications[i].Type,
+			IsRead:  notifications[i].IsRead,
+			Content: notifications[i].Content,
+		})
+	}
+
+	return protoNots, nil
 }
