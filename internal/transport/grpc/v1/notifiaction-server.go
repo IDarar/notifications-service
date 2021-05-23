@@ -23,19 +23,12 @@ func NewNotificationsServer(srvs *service.Services) *NotificationServer {
 }
 
 func (s *NotificationServer) NotificationCreate(ctx context.Context, not *pb.Notification) (*emptypb.Empty, error) {
-	uId, err := idConv(not.To)
-	if err != nil {
-		return nil, err
-	}
-	from, err := idConv(not.From)
-	if err != nil {
-		return nil, err
-	}
-	notification := &domain.Notification{UserID: uId, From: from, Type: not.Type, Topic: not.Where, Content: not.Content, CreatedAt: not.Time.AsTime(), IsRead: false}
+
+	notification := &domain.Notification{UserID: int(not.UserId), From: int(not.From), Type: not.Type, Topic: not.Topic, Content: not.Content, CreatedAt: not.Time.AsTime(), IsRead: false}
 	logger.Info(notification)
 	empty := &emptypb.Empty{}
 
-	if err = s.services.Notifications.Create(ctx, *notification); err != nil {
+	if err := s.services.Notifications.Create(ctx, *notification); err != nil {
 		return nil, err
 	}
 
@@ -47,8 +40,14 @@ func (s *NotificationServer) NotificationsGet(ctx context.Context, not *pb.ReqNo
 	if err != nil {
 		return nil, err
 	}
-	s.services.Notifications.GetForUser(uId, int(not.Offset), not.Type)
-	return nil, nil
+	nots, err := s.services.Notifications.GetForUser(uId, int(not.Offset), not.Type)
+	if err != nil {
+		return nil, err
+	}
+	pbNots := &pb.RespNotifications{
+		Notifications: nots,
+	}
+	return pbNots, nil
 }
 
 func (s *NotificationServer) NotificationsGetUnread(ctx context.Context, in *pb.ReqNotifications) (*pb.UnreadNumResponse, error) {

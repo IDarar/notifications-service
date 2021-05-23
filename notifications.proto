@@ -5,14 +5,14 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
 message Notification {
-  string to = 1;   // owner of notification
-  string from = 2; // user or event sent
+  int32 user_id = 1;   // owner of notification
+  int32 from = 2; // user or event sent
   google.protobuf.Timestamp time = 3;
-  string where = 4;   // which topic. ID
+  string topic = 4;   // which topic. ID
   string content = 5; // what sent. ID
   string type = 6;    // forum notification, friend request, forum ban etc
   string text = 7;
-  bool seen = 8;
+  bool is_read= 8;
 }
 
 message ReqNotifications {

@@ -10,7 +10,7 @@ import (
 type Notifications interface {
 	Create(ctx context.Context, not domain.Notification) error
 	Delete()
-	GetByUserID(uID int) ([]domain.Notification, error)
+	GetForUser(uID int, offset int, notType string) ([]*domain.Notification, error)
 }
 type Repositories struct {
 	Notifications Notifications
