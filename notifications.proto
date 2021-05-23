@@ -11,10 +11,15 @@ message Notification {
   string where = 4;   // which topic. ID
   string content = 5; // what sent. ID
   string type = 6;    // forum notification, friend request, forum ban etc
+  string text = 7;
+  bool seen = 8;
 }
 
 message ReqNotifications {
   string user = 1; // ID
+  int32 offset = 2;
+  int32 amount = 3;
+  string type = 4; // if omited, return all notifications
 }
 
 message RespNotifications { repeated Notification notifications = 1; }
@@ -25,5 +30,6 @@ service NotificationsService {
   rpc NotificationCreate(Notification) returns (google.protobuf.Empty);
   rpc NotificationsGet(ReqNotifications) returns (RespNotifications);
   rpc NotificationsGetUnread(ReqNotifications) returns (UnreadNumResponse);
-  rpc NotificationMark(Notification) returns (google.protobuf.Empty); // change status of motification: seen or unseen
+  rpc NotificationMark(Notification) returns (
+      google.protobuf.Empty); // change status of motification: seen or unseen
 }

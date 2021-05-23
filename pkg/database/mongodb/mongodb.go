@@ -8,7 +8,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const timeout = 5 * time.Second
+const timeout = 2 * time.Second
 
 // NewClient established connection to a mongoDb instance using provided URI and auth credentials
 func NewClient(uri, username, password string) (*mongo.Client, error) {
